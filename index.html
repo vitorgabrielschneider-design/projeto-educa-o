@@ -122,6 +122,8 @@
             display: none;
             border: 2px solid #f3b33d;
             box-shadow: 0 12px 30px #1a332b80;
+            max-height: 400px;
+            overflow-y: auto;
         }
         
         .resultado-pesquisa.mostrar {
@@ -449,7 +451,7 @@
     <!-- BARRA DE PESQUISA FUNCIONAL -->
     <div class="barra-pesquisa">
         <div class="pesquisa-container">
-            <input type="text" id="campoPesquisa" placeholder="🔍 Pesquisar no conteúdo: localização, clima, cidades, cultura..." autocomplete="off">
+            <input type="text" id="campoPesquisa" placeholder="🔍 Pesquisar no conteúdo: localização, clima, cidades, cultura..." autocomplete="off" onkeyup="if(event.key === 'Enter') pesquisarConteudo()">
             <button onclick="pesquisarConteudo()">
                 <span>🔍</span> Buscar
             </button>
@@ -762,9 +764,12 @@
     </footer>
 
     <script>
-        // Base de dados de pesquisa com todos os conteúdos do site
-        const conteudosParaPesquisa = [
+        // Base de dados completa de pesquisa com todos os conteúdos do site
+        const baseDadosPesquisa = [
+            // Localização
             { titulo: "Localização do Paraná", descricao: "Região Sul, coordenadas 22°30' a 26°40' S, área 199.307 km²", secao: "localizacao", palavras: "localização posição geografia sul brasil" },
             { titulo: "Limites do Paraná", descricao: "SP (norte), SC (sul), Oceano Atlântico (leste), MS (oeste), Argentina e Paraguai", secao: "localizacao", palavras: "limites fronteira divisa são paulo santa catarina mato grosso argentina paraguai" },
-            { titulo: "Biomas - Mata Atlântica", descricao: "Cobria 98% do estado, hoje 8% - palmito, bromélias, jaguatirica", secao: "aspectos-naturais", palavras: "mata atlântica bioma vegetação floresta" },
-            { titulo: "Floresta com Araucárias", descricao: "Pinheiro-do-paraná, erva-mate, imbuia - menos de 3% da cobertura original", secao: "aspectos-naturais", palavras: "araucária pin
+            { titulo: "Área territorial", descricao: "199.307 km² - 15º maior estado brasileiro", secao: "localizacao", palavras: "área território tamanho extensão" },
+            
+            // Biomas e vegetação
+            { titulo: "Mata Atlântica no Paraná", descricao: "Cobria 98% do estado, hoje 8% - palmito, bromélias, jaguatir
