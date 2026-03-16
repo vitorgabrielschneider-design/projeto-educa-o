@@ -59,6 +59,108 @@
             padding-left: 1.2rem;
         }
 
+        /* Barra de pesquisa */
+        .barra-pesquisa {
+            max-width: 1300px;
+            margin: 1rem auto 0;
+            padding: 0 2rem;
+        }
+        
+        .pesquisa-container {
+            background: white;
+            border-radius: 60px;
+            padding: 0.3rem;
+            display: flex;
+            box-shadow: 0 8px 20px #1e4a3a66;
+            border: 2px solid #f3b33d;
+        }
+        
+        .pesquisa-container input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 1rem 1.8rem;
+            font-size: 1.1rem;
+            background: transparent;
+            color: #1e3d30;
+            border-radius: 60px;
+        }
+        
+        .pesquisa-container input::placeholder {
+            color: #5f8b79;
+            font-style: italic;
+        }
+        
+        .pesquisa-container button {
+            background: #f3b33d;
+            border: none;
+            border-radius: 50px;
+            padding: 0.8rem 2rem;
+            margin: 0.3rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #0a3b2c;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #e09d2b;
+        }
+        
+        .pesquisa-container button:hover {
+            background: #ffc85c;
+            transform: scale(1.02);
+        }
+        
+        .resultado-pesquisa {
+            background: #ffffffdd;
+            backdrop-filter: blur(6px);
+            border-radius: 30px;
+            margin: 0.5rem 2rem 0;
+            padding: 1rem 2rem;
+            display: none;
+            border: 2px solid #f3b33d;
+            box-shadow: 0 12px 30px #1a332b80;
+        }
+        
+        .resultado-pesquisa.mostrar {
+            display: block;
+        }
+        
+        .resultado-item {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #bdd9ce;
+            cursor: pointer;
+            transition: 0.1s;
+            border-radius: 30px;
+        }
+        
+        .resultado-item:hover {
+            background: #d8efe5;
+            transform: translateX(8px);
+        }
+        
+        .resultado-item a {
+            text-decoration: none;
+            color: #0a5e44;
+            font-weight: 600;
+            display: block;
+        }
+        
+        .resultado-item .caminho {
+            font-size: 0.85rem;
+            color: #467a63;
+            margin-top: 0.2rem;
+        }
+        
+        .sem-resultado {
+            padding: 1.5rem;
+            text-align: center;
+            color: #2f5e4b;
+            font-weight: 500;
+        }
+
         .container {
             max-width: 1300px;
             margin: 2rem auto;
@@ -325,6 +427,13 @@
             .topo h1 {
                 font-size: 2.3rem;
             }
+            .pesquisa-container {
+                flex-direction: column;
+                border-radius: 30px;
+            }
+            .pesquisa-container button {
+                margin: 0.3rem;
+            }
         }
     </style>
 </head>
@@ -336,6 +445,17 @@
         </h1>
         <p>📘 Tudo o que você aprendeu na escola sobre o nosso estado — completo, direto e atualizado.</p>
     </header>
+
+    <!-- BARRA DE PESQUISA FUNCIONAL -->
+    <div class="barra-pesquisa">
+        <div class="pesquisa-container">
+            <input type="text" id="campoPesquisa" placeholder="🔍 Pesquisar no conteúdo: localização, clima, cidades, cultura..." autocomplete="off">
+            <button onclick="pesquisarConteudo()">
+                <span>🔍</span> Buscar
+            </button>
+        </div>
+        <div id="resultadosPesquisa" class="resultado-pesquisa"></div>
+    </div>
 
     <div class="container">
         <!-- índice de navegação -->
@@ -489,7 +609,7 @@
                 <div>
                     <h3>🌽 Agropecuária (destaque nacional)</h3>
                     <ul>
-                        <li><strong>Grãos:</strong> soja (1º produtor?), milho, trigo.</li>
+                        <li><strong>Grãos:</strong> soja, milho, trigo.</li>
                         <li><strong>Proteína animal:</strong> frango (maior exportador do país), suínos, peixes.</li>
                         <li><strong>Florestas plantadas:</strong> papel e celulose (Arapoti, Jaguariaíva).</li>
                         <li><strong>Erva-mate:</strong> maior produtor brasileiro.</li>
@@ -640,5 +760,11 @@
             📚 1ª série Ensino Médio – Geografia do Paraná – completo, como na escola. © 2026
         </div>
     </footer>
-</body>
-</html>
+
+    <script>
+        // Base de dados de pesquisa com todos os conteúdos do site
+        const conteudosParaPesquisa = [
+            { titulo: "Localização do Paraná", descricao: "Região Sul, coordenadas 22°30' a 26°40' S, área 199.307 km²", secao: "localizacao", palavras: "localização posição geografia sul brasil" },
+            { titulo: "Limites do Paraná", descricao: "SP (norte), SC (sul), Oceano Atlântico (leste), MS (oeste), Argentina e Paraguai", secao: "localizacao", palavras: "limites fronteira divisa são paulo santa catarina mato grosso argentina paraguai" },
+            { titulo: "Biomas - Mata Atlântica", descricao: "Cobria 98% do estado, hoje 8% - palmito, bromélias, jaguatirica", secao: "aspectos-naturais", palavras: "mata atlântica bioma vegetação floresta" },
+            { titulo: "Floresta com Araucárias", descricao: "Pinheiro-do-paraná, erva-mate, imbuia - menos de 3% da cobertura original", secao: "aspectos-naturais", palavras: "araucária pin
