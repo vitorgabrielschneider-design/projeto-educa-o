@@ -59,108 +59,49 @@
             padding-left: 1.2rem;
         }
 
-        /* Barra de pesquisa */
-        .barra-pesquisa {
+        /* GRAFITE ESTILIZADO - PARANÁ */
+        .graffiti-container {
             max-width: 1300px;
-            margin: 1rem auto 0;
+            margin: 0.5rem auto 1rem;
             padding: 0 2rem;
-        }
-        
-        .pesquisa-container {
-            background: white;
-            border-radius: 60px;
-            padding: 0.3rem;
-            display: flex;
-            box-shadow: 0 8px 20px #1e4a3a66;
-            border: 2px solid #f3b33d;
-        }
-        
-        .pesquisa-container input {
-            flex: 1;
-            border: none;
-            outline: none;
-            padding: 1rem 1.8rem;
-            font-size: 1.1rem;
-            background: transparent;
-            color: #1e3d30;
-            border-radius: 60px;
-        }
-        
-        .pesquisa-container input::placeholder {
-            color: #5f8b79;
-            font-style: italic;
-        }
-        
-        .pesquisa-container button {
-            background: #f3b33d;
-            border: none;
-            border-radius: 50px;
-            padding: 0.8rem 2rem;
-            margin: 0.3rem;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: #0a3b2c;
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid #e09d2b;
-        }
-        
-        .pesquisa-container button:hover {
-            background: #ffc85c;
-            transform: scale(1.02);
-        }
-        
-        .resultado-pesquisa {
-            background: #ffffffdd;
-            backdrop-filter: blur(6px);
-            border-radius: 30px;
-            margin: 0.5rem 2rem 0;
-            padding: 1rem 2rem;
-            display: none;
-            border: 2px solid #f3b33d;
-            box-shadow: 0 12px 30px #1a332b80;
-            max-height: 400px;
-            overflow-y: auto;
-        }
-        
-        .resultado-pesquisa.mostrar {
-            display: block;
-        }
-        
-        .resultado-item {
-            padding: 0.8rem 1rem;
-            border-bottom: 1px solid #bdd9ce;
-            cursor: pointer;
-            transition: 0.1s;
-            border-radius: 30px;
-        }
-        
-        .resultado-item:hover {
-            background: #d8efe5;
-            transform: translateX(8px);
-        }
-        
-        .resultado-item a {
-            text-decoration: none;
-            color: #0a5e44;
-            font-weight: 600;
-            display: block;
-        }
-        
-        .resultado-item .caminho {
-            font-size: 0.85rem;
-            color: #467a63;
-            margin-top: 0.2rem;
-        }
-        
-        .sem-resultado {
-            padding: 1.5rem;
             text-align: center;
-            color: #2f5e4b;
-            font-weight: 500;
+        }
+        
+        .grafite-parana {
+            font-family: 'Permanent Marker', 'Impact', 'Arial Black', cursive;
+            font-size: 7rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #1a2f28, #0d4d37, #1f6e4a, #3b8f63);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 8px 8px 0 #00000040, 12px 12px 20px rgba(0, 0, 0, 0.6), 0 0 30px #8bc34a80;
+            letter-spacing: 6px;
+            transform: rotate(-2deg) skewX(-5deg);
+            display: inline-block;
+            border: 6px dashed #f3b33d;
+            padding: 0.5rem 3rem 0.5rem 3rem;
+            border-radius: 80px 20px 80px 20px;
+            background-color: #0f241d;
+            background-image: radial-gradient(circle at 20% 40%, #ffd96655 3px, transparent 3px), 
+                              repeating-linear-gradient(45deg, #0000001a 0px, #0000001a 6px, transparent 6px, transparent 12px);
+            box-shadow: 0 20px 30px #00000080, inset 0 -5px 10px #7b5f2e;
+            transition: 0.2s;
+            line-height: 1.2;
+        }
+        
+        .grafite-parana:hover {
+            transform: rotate(-1deg) skewX(-4deg) scale(1.02);
+            text-shadow: 10px 10px 0 #00000060, 15px 15px 25px black;
+            border-color: #ffdb8e;
+        }
+        
+        @media (max-width: 800px) {
+            .grafite-parana {
+                font-size: 4rem;
+                padding: 0.3rem 1.5rem;
+                letter-spacing: 3px;
+            }
         }
 
         .container {
@@ -429,13 +370,6 @@
             .topo h1 {
                 font-size: 2.3rem;
             }
-            .pesquisa-container {
-                flex-direction: column;
-                border-radius: 30px;
-            }
-            .pesquisa-container button {
-                margin: 0.3rem;
-            }
         }
     </style>
 </head>
@@ -448,15 +382,9 @@
         <p>📘 Tudo o que você aprendeu na escola sobre o nosso estado — completo, direto e atualizado.</p>
     </header>
 
-    <!-- BARRA DE PESQUISA FUNCIONAL -->
-    <div class="barra-pesquisa">
-        <div class="pesquisa-container">
-            <input type="text" id="campoPesquisa" placeholder="🔍 Pesquisar no conteúdo: localização, clima, cidades, cultura..." autocomplete="off" onkeyup="if(event.key === 'Enter') pesquisarConteudo()">
-            <button onclick="pesquisarConteudo()">
-                <span>🔍</span> Buscar
-            </button>
-        </div>
-        <div id="resultadosPesquisa" class="resultado-pesquisa"></div>
+    <!-- GRAFITE ESCRITO "PARANÁ" NO LUGAR DA BARRA DE PESQUISA -->
+    <div class="graffiti-container">
+        <div class="grafite-parana">PARANÁ</div>
     </div>
 
     <div class="container">
@@ -762,14 +690,5 @@
             📚 1ª série Ensino Médio – Geografia do Paraná – completo, como na escola. © 2026
         </div>
     </footer>
-
-    <script>
-        // Base de dados completa de pesquisa com todos os conteúdos do site
-        const baseDadosPesquisa = [
-            // Localização
-            { titulo: "Localização do Paraná", descricao: "Região Sul, coordenadas 22°30' a 26°40' S, área 199.307 km²", secao: "localizacao", palavras: "localização posição geografia sul brasil" },
-            { titulo: "Limites do Paraná", descricao: "SP (norte), SC (sul), Oceano Atlântico (leste), MS (oeste), Argentina e Paraguai", secao: "localizacao", palavras: "limites fronteira divisa são paulo santa catarina mato grosso argentina paraguai" },
-            { titulo: "Área territorial", descricao: "199.307 km² - 15º maior estado brasileiro", secao: "localizacao", palavras: "área território tamanho extensão" },
-            
-            // Biomas e vegetação
-            { titulo: "Mata Atlântica no Paraná", descricao: "Cobria 98% do estado, hoje 8% - palmito, bromélias, jaguatir
+</body>
+</html>
